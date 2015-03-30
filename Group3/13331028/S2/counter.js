@@ -2,6 +2,7 @@
 homework, 04.asychronous js, javascript*/
 
 var counter_num = 0;
+var clickIcon = false;
 
 window.onload = function () {
 	var icon = document.getElementsByClassName("icon");
@@ -12,6 +13,8 @@ window.onload = function () {
 
 function end() {
 	return function () {
+		clickIcon = false;
+
 		var buttons = document.getElementsByClassName("button");
 		for (var i = 0; i < buttons.length; i++) {
 			buttons[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
@@ -24,11 +27,15 @@ function end() {
 }
 
 function startCounter() {
-	var buttons = document.getElementsByClassName("button");
-	buttons[0].onclick = setTimeout(clickButton(0, buttons), 300);
-	
-	var result = document.getElementsByClassName('page');
-	result[0].innerHTML = '';
+	if (!clickIcon) {
+		var buttons = document.getElementsByClassName("button");
+		buttons[0].onclick = setTimeout(clickButton(0, buttons), 300);
+		
+		var result = document.getElementsByClassName('page');
+		result[0].innerHTML = '';
+		
+		clickIcon = true;
+	}
 }
 
 function clickButton(i, buttons) {
