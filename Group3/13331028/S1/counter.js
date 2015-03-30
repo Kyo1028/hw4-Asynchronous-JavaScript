@@ -2,6 +2,7 @@
 homework, 04.asychronous js, javascript*/
 
 var counter_num = 0;
+var gettingNum = false;
 
 window.onload = function () {
 	var icon = document.getElementsByClassName("icon");
@@ -38,7 +39,9 @@ function startCounter() {
 
 function clickButton(i, buttons) {
 	return function () {
-		if (buttons[i].childNodes.length == 1) {
+		if (buttons[i].childNodes.length == 1 && !gettingNum) {
+			gettingNum = true;
+
 			for (var j = 0; j < buttons.length; j++)
 				if (j != i) buttons[j].style.backgroundColor = "gray";
 
@@ -80,6 +83,8 @@ function getRandomNum(i, buttons, red) {
 	    	activateButtons(i, buttons, red);
 			counter_num += 1;
 			canCal(buttons);
+
+			gettingNum = false;
 	    }
 	  }
 	xmlhttp.open("GET","/",true);
