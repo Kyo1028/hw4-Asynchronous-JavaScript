@@ -5,7 +5,7 @@ var counter_num = 0;
 
 window.onload = function () {
 	var icon = document.getElementsByClassName("icon");
-	icon[0].onclick = startCounter;
+	icon[0].onmouseover = startCounter;
 
 	var place = document.getElementById("button");
 	place.onmouseleave = end();
